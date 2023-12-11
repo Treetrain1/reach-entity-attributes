@@ -82,3 +82,19 @@ jar {
       "Sealed": "true"
     ])
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            artifact(javadocJar)
+
+            pom {
+                groupId = project.group.toString()
+                artifactId = rootProject.base.archivesName.get().lowercase()
+                version = project.version.toString()
+            }
+        }
+    }
+}
