@@ -97,6 +97,7 @@ publishing {
         }
     }
     repositories {
+        mavenLocal()
         maven {
             url = "https://maven.jamieswhiteshirt.com/libs-" + (isReleaseVersion ? "release" : "snapshot")
             credentials {
