@@ -5,7 +5,6 @@ plugins {
     id "fabric-loom" version "1.4-SNAPSHOT"
     id "net.nemerosa.versioning" version "3.0.0"
     id "maven-publish"
-    id "signing"
 }
 
 group = maven_group
@@ -82,33 +81,4 @@ jar {
 
       "Sealed": "true"
     ])
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            afterEvaluate {
-                artifact remapJar
-                artifact(sourcesJar.archiveFile) {
-                    classifier = "sources"
-                    builtBy remapSourcesJar
-                }
-            }
-        }
-    }
-    repositories {
-        mavenLocal()
-        maven {
-            url = "https://maven.jamieswhiteshirt.com/libs-" + (isReleaseVersion ? "release" : "snapshot")
-            credentials {
-                username = project.properties.jwsMavenUser
-                password = project.properties.jwsMavenPassword
-            }
-        }
-    }
-}
-
-signing {
-    required = isReleaseVersion
-    sign publishing.publications.mavenJava
 }
