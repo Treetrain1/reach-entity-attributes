@@ -8,6 +8,7 @@
     "client.GameRendererMixin"
   ],
   "mixins": [
+    "BrushItemMixin",
     "ChestStateManagerMixin",
     "ForgingScreenHandlerMixin",
     "InventoryValidationMixin",

@@ -2,9 +2,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         maven {
-            url = "https://maven.fabricmc.net"
+            url = uri("https://maven.fabricmc.net")
         }
     }
 }
-
-rootProject.name = archives_base_name
